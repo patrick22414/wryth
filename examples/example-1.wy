@@ -1,0 +1,26 @@
+from math import PI
+
+
+def fib(n num) -> num:
+    if n <= 2:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+
+class MyClass from MyBaseClass:
+    _id  str  # this is private
+
+    name str  # these are public
+    age  num
+
+    def __init__(self, super):
+        super.__init__()
+
+    def get_id(self):
+        return self._id
+
+
+def main():
+    list_1 = [1, 2]
+    list_2 = map(list_1, lambda x num: x + 1)
