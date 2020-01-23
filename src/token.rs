@@ -1,8 +1,10 @@
+#[derive(Debug)]
 pub struct Token {
-    text: String,
-    kind: TokenKind,
+    pub text: String,
+    pub kind: TokenKind,
 }
 
+#[derive(Debug)]
 pub enum TokenKind {
     NumLiteral,
     StrLiteral,
