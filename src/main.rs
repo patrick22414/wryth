@@ -4,6 +4,9 @@ use std::io::prelude::*;
 use std::io::BufReader;
 use std::path::Path;
 
+mod lexer;
+mod token;
+
 fn main() {
     let path = Path::new("examples/example-1.wy");
 
