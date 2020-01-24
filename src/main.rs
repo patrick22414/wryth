@@ -9,8 +9,8 @@ fn main() {
     let path = Path::new("examples/example-1.wy");
 
     // open file
-    if let Ok(file) = File::open(&path) {
-        let mut lex = Lexer::new(file);
+    if let Ok(mut file) = File::open(&path) {
+        let mut lex = Lexer::new(&mut file);
 
         println!("\nIteration 1");
         lex.lex();
