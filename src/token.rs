@@ -1,20 +1,22 @@
 #[derive(Debug)]
 pub struct Token {
-    pub text: String,
+    pub text: Option<String>,
     pub kind: TokenKind,
 }
 
 #[derive(Debug)]
 pub enum TokenKind {
-    NumLiteral,
-    StrLiteral,
+    NumLiteral(NumLiteralKind),
+    StrLiteral(StrLiteralKind),
 
     Name,
-    Keyword,
+    Keyword(KeywordKind),
 
-    Operator,
+    Operator(OperatorKind),
+    Delimiter,
 }
 
+#[derive(Debug)]
 pub enum NumLiteralKind {
     Dec,
     Bin,
@@ -22,6 +24,7 @@ pub enum NumLiteralKind {
     Hex,
 }
 
+#[derive(Debug)]
 pub enum StrLiteralKind {
     Normal,
     Raw,
@@ -29,36 +32,39 @@ pub enum StrLiteralKind {
     Multiline,
 }
 
+#[derive(Debug)]
 pub enum KeywordKind {
-    Num,
-    Str,
-    Dyn,
-
     Def,
     Class,
     Lambda,
-
-    Import,
+    Kind,
 
     If,
     Else,
     Elif,
 
-    For,
     While,
+    For,
     Break,
     Continue,
 
+    Try,
+    Except,
+    Finally,
+
     With,
     As,
-    In,
-    Is,
+
+    Import,
     From,
 
-    NOT,
-    OR,
-    AND,
+    Not,
+    Or,
+    And,
+    In,
+    Is,
 
+    Pass,
     Return,
 
     None,
@@ -66,6 +72,7 @@ pub enum KeywordKind {
     False,
 }
 
+#[derive(Debug)]
 pub enum OperatorKind {
     Dot,
 
@@ -79,13 +86,6 @@ pub enum OperatorKind {
     BitOR,
     BitXOR,
     BitNOT,
-
-    OpParen,
-    EdParen,
-    OpBrack,
-    EdBrack,
-    OpCurly,
-    EdCurly,
 
     EQ,
     GT,
@@ -101,4 +101,14 @@ pub enum OperatorKind {
     Hash,
 
     Semicolon,
+}
+
+#[derive(Debug)]
+enum DelimiterKind {
+    OpParen,
+    EdParen,
+    OpBrack,
+    EdBrack,
+    OpCurly,
+    EdCurly,
 }
